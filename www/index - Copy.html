@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>Catcall</title>
+
+<script type="text/javascript" src="twis.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	myScroll = new TWIS('#wrapper');
+
+/*
+	// Test scrollY and scrollToPage
+	setTimeout(function () {
+		myScroll.scrollToPage(3, 500);
+	}, 1000);
+
+	setTimeout(function () {
+		myScroll.scrollY(-1000, 1500);
+	}, 2000);
+*/
+
+	// Free some mem
+	window.removeEventListener('load', loaded, false);
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+window.addEventListener('load', loaded, false);
+var this_click_time = new Date().getTime();
+var prev_click_time = new Date().getTime();
+var gap_time = new Date().getTime();
+
+function playtheaudio(image, audio) {
+ 
+this_click_time = new Date().getTime();
+
+gap_time=this_click_time-prev_click_time; 
+ 
+    if (gap_time > 1000) {
+      document.images[image].src = "listengreen30x30.png";
+	  my_media = new Media(audio, function()  
+                    {
+                       this.release();
+                    });
+	  
+	  
+      my_media.play();
+      delete my_media;
+	}
+	
+	  prev_click_time=this_click_time;
+}
+
+</script>
+
+
+</head>
+<body>
+
+<!--
+			   <table class="maintable">
+                     <tr> 
+					      <th><a onclick="playtheaudio(0, '/android_asset/www/mp3s/Tiddles.mp3');"><img src="listen30x30.png"></a></th> 										
+						  <th>&nbsp;</th> 						  					 
+					      <th>Abide</th> 
+						  <th>&nbsp;</th> 
+						  <th>Bear</th> 
+                     </tr>
+					 
+ 			   </table>					 
+-->
+					 
+<div align="center">
+  <table width="31%" border="1">
+    <tr> 
+      <td width="48%"><img src="Recordyourcatcall.png" width="180" height="180" align="absmiddle"></td>
+      <td width="3%">&nbsp;</td>
+      <td width="49%"><a onclick="playtheaudio(0, '/android_asset/www/mp3s/Tiddles.mp3');"><img src="Playyourcatcallback.png" width="180" height="180"></a></td>
+    </tr>
+    <tr> 
+      <td width="48%">&nbsp;</td>
+      <td width="3%">&nbsp;</td>
+      <td width="49%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td width="48%"><img src="Playcatcall.png" width="180" height="180"></td>
+      <td width="3%">&nbsp;</td>
+      <td width="49%"><img src="Stopcatcall.png" width="180" height="180"></td>
+    </tr>
+  </table>
+</div>
+
+
+<script type="text/javascript">
+		
+var windowdeviceP=document.getElementById("windowdevice")
+var windowdeviceplatformP=document.getElementById("windowdeviceplatform")
+
+</script>
+								  
+
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+		
+<style>
+    .toptable { width: 90%; margin-left:5%; margin-right:5%; border: 0px; }
+    .toptable th { text-align:left; font-size: 70px; font-weight: bolder; border: 0px; } 
+</style>
+
+<style>
+    .maintable { width: 100%; border: 0px; }
+    .maintable th { width:10%; text-align:left; font-size: medium; padding: 5px; border: 0px; }	
+    .maintable th + th { width:1%; font-size: medium; padding: 1px; border: 0px; }
+    .maintable th + th + th { width:37%; text-align:left; font-size: medium; padding: 5px; border: 0px; }
+    .maintable th + th + th +th { width:1%; font-size: medium; padding: 1px; border: 0px; }
+    .maintable th + th + th +th +th { width:51%; text-align:left; font-size: medium; padding: 5px; border: 0px; }	
+</style>
+
+</body>
+</html>

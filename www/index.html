@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>Catcall</title>
+
+<script type="text/javascript" src="twis.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	myScroll = new TWIS('#wrapper');
+
+/*
+	// Test scrollY and scrollToPage
+	setTimeout(function () {
+		myScroll.scrollToPage(3, 500);
+	}, 1000);
+
+	setTimeout(function () {
+		myScroll.scrollY(-1000, 1500);
+	}, 2000);
+*/
+
+	// Free some mem
+	window.removeEventListener('load', loaded, false);
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+window.addEventListener('load', loaded, false);
+var this_click_time = new Date().getTime();
+var prev_click_time = new Date().getTime();
+var gap_time = new Date().getTime();
+var ilist = document.images;
+
+function playtheaudio1(image, audio) {
+document.images[2].src = "spinner1.gif";
+this_click_time = new Date().getTime();
+gap_time=this_click_time-prev_click_time; 
+ 
+    if (gap_time > 1000) {
+	  my_media = new Media(audio, function()  
+                    {
+                       this.release();
+                    });
+      my_media.play();
+      delete my_media;
+	}
+	  prev_click_time=this_click_time;
+}
+
+	
+function playtheaudio2(image, audio) {
+document.images[7].src = "spinner2.gif";
+this_click_time = new Date().getTime();
+gap_time=this_click_time-prev_click_time; 
+ 
+    if (gap_time > 1000) {
+	  my_media = new Media(audio, function()  
+                    {
+                       this.release();
+                    });
+      my_media.play();
+      delete my_media;
+	}
+	  prev_click_time=this_click_time;
+}
+
+function putplaycatcallbuttonback() {
+document.images[2].src = "Playcatcall120x120.png";
+}
+
+function putreplaybuttonback() {
+document.images[7].src = "Replayyourrecording120x120.png";
+}
+ 
+</script>
+
+
+</head>
+<body>
+
+<div id="page-title"><h1><font size="6" color="white">Cat Call</font></h1></div>
+
+<div id="mainscreen"> 
+  <div align="right">
+  <br>
+      <table border="0">
+      <tr> 
+		<td><button class="button" onclick="putplaycatcallbuttonback();document.getElementById('settingsscreen').style.display = 'block'; document.getElementById('mainscreen').style.display = 'none';"><img src="settings50x50.png"></button></td>
+        <td>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+		<td><button class="button" onclick="putplaycatcallbuttonback();document.getElementById('helpscreen').style.display = 'block'; document.getElementById('mainscreen').style.display = 'none';"><img src="questionmark50x50.png"></button></td>		
+		<td>&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+      </tr>
+    </table>
+	</div>
+	<div align="center">
+  <br>
+    <br>
+	  <br>
+  <br>	  
+    <table border="0">
+      <tr> 
+        <td><a onclick="playtheaudio1(0, '/android_asset/www/mp3s/Tiddles.mp3');"><img src="Playcatcall120x120.png"></a></td>
+      </tr>
+      <tr> 
+        <td>&nbsp;</td>
+      </tr>
+      <tr> 
+        <td><a onclick="putplaycatcallbuttonback();"><img src="Stopcatcall120x120.png"></a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+	
+<div id="settingsscreen">
+
+    <button class="button" onclick="document.getElementById('mainscreen').style.display = 'block'; document.getElementById('settingsscreen').style.display = 'none';putreplaybuttonback();">;<img src="backbutton52x50.png"></button>
+	<div align="center">	
+	  <table width="31%" border="0">
+    <tr> 
+      <td><a onclick="putreplaybuttonback();"><img src="Recordyourcatcall120x120.png"></a></td>
+    </tr>
+    <tr> 
+      <td>&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><a onclick="putreplaybuttonback();"><img src="Stoptherecording120x120.png"></a></td>
+    </tr>
+    <tr> 
+      <td>&nbsp;</td>
+    </tr>	
+    <tr> 
+      <td><a onclick="playtheaudio2(0, '/android_asset/www/mp3s/Tiddles.mp3');"><img src="Replayyourrecording120x120.png"></a></td>	
+    </tr>
+  </table>
+  </div>	
+</div>
+	
+<div id="helpscreen">
+
+    <button class="button" onclick="document.getElementById('mainscreen').style.display = 'block'; document.getElementById('helpscreen').style.display = 'none'">;<img src="backbutton52x50.png"></button>
+	<div align="center">	
+	  <table width="90%" border="0">
+    <tr> 
+      <td>
+	  <p align="left">
+	  <font size="+1">
+	     Before you can use this app you must record your voice (within Settings) calling your cat in your usual way.  
+		 <br>
+		 The app creates a raised frequency version which humans
+		 cannot hear, but your cat will and the app transmits this when you click on PLAY CATCALL.
+		 <br>
+		 This plays continuously until you click on STOP CATCALL (or 2 minutes have elapsed).
+		 <br>
+		 Please train your cat to respond to this version of your usual catcall.
+		 Do this by using the app each time you also call your cat for about 10 days.
+		 <br>
+		 After that your cat should recognise your app call version.
+		 </font>
+	  </p>
+	  </td>
+    </tr>
+  </table>
+  </div>	
+	</div>	
+	
+	
+<div id="page-footer"><h1><font size="6" color="white">Cat Call</font></h1></div>
+
+<script type="text/javascript">
+		
+var windowdeviceP=document.getElementById("windowdevice")
+var windowdeviceplatformP=document.getElementById("windowdeviceplatform")
+
+</script>
+								  
+
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+		
+<style>
+    .toptable { width: 90%; margin-left:5%; margin-right:5%; border: 0px; }
+    .toptable th { text-align:left; font-size: 70px; font-weight: bolder; border: 0px; } 
+	h1 {text-align:center;}
+</style>
+
+<style>
+    .maintable { width: 100%; border: 0px; }
+    .maintable th { width:10%; text-align:left; font-size: medium; padding: 5px; border: 0px; }	
+    .maintable th + th { width:1%; font-size: medium; padding: 1px; border: 0px; }
+    .maintable th + th + th { width:37%; text-align:left; font-size: medium; padding: 5px; border: 0px; }
+    .maintable th + th + th +th { width:1%; font-size: medium; padding: 1px; border: 0px; }
+    .maintable th + th + th +th +th { width:51%; text-align:left; font-size: medium; padding: 5px; border: 0px; }	
+</style>
+
+</body>
+</html>
